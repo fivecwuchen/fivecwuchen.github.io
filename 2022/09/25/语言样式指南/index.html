@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>fivecwuchen&#39;s blog</title>
+  <title>语言样式指南 | fivecwuchen&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Reading notes and work memos">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fivecwuchen&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="写语句时遵循统一的样式，可以增加可读性，减少错误。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语言样式指南">
+<meta property="og:url" content="http://yoursite.com/2022/09/25/%E8%AF%AD%E8%A8%80%E6%A0%B7%E5%BC%8F%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="fivecwuchen&#39;s blog">
-<meta property="og:description" content="Reading notes and work memos">
+<meta property="og:description" content="写语句时遵循统一的样式，可以增加可读性，减少错误。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-25T10:21:40.000Z">
+<meta property="article:modified_time" content="2022-09-25T12:27:12.172Z">
 <meta property="article:author" content="fivec">
-<meta property="article:tag" content="reading notes, memos, GIS, Coder, Developer, Geek, Programmer, Python, Cpp, Java, tools, 读书笔记, 程序员, 程序媛, 极客">
+<meta property="article:tag" content="极客时间">
+<meta property="article:tag" content="计算机基础">
+<meta property="article:tag" content="规范">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="fivecwuchen&#39;s blog" type="application/atom+xml">
@@ -161,16 +168,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-语言样式指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-语言样式指南" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/25/%E8%AF%AD%E8%A8%80%E6%A0%B7%E5%BC%8F%E6%8C%87%E5%8D%97/">语言样式指南</a>
+    <h1 class="article-title" itemprop="name">
+      语言样式指南
     </h1>
   
 
@@ -186,9 +191,128 @@ var _hmt = _hmt || [];
         <blockquote>
 <p>写语句时遵循统一的样式，可以增加可读性，减少错误。</p>
 </blockquote>
-        
+<span id="more"></span>
+
+<h2 id="各语言样式指南摘要"><a href="#各语言样式指南摘要" class="headerlink" title="各语言样式指南摘要"></a>各语言样式指南摘要</h2><h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><ol>
+<li><p>不用复数，尽量使用更自然的集合术语。比如，用“staff”替代“<del>employees</del>”，或用“people”替代“<del>individuals</del>”</p>
+</li>
+<li><p>使用snake_case</p>
+</li>
+<li><p>统一的后缀，下列后缀有统一的意义，能保证 SQL 代码更容易理解。在合适的时候使用正确的后缀。</p>
+<ul>
+<li>_id —— 独一无二的标识符，如主键。</li>
+<li>_status —— 标志值或任何表示状态的值，比如publication_status。</li>
+<li>_total —— 总和或某些值的和。</li>
+<li>_num —— 表示该字段包含数值。</li>
+<li>_name —— 表示名字，例如 first_name。</li>
+<li>_seq —— 包含一系列值。</li>
+<li>_date —— 表示该列包含日期。</li>
+<li>_tally —— 计数值。</li>
+<li>_size —— 大小，如文件大小或服装大小。</li>
+<li>_addr —— 地址，有形的或无形的，如 ip_addr</li>
+</ul>
+</li>
+<li><p>关键字总是大写，每个关键字定义之后换行</p>
+</li>
+<li><p>出于在数据库引擎之间达到最大程度兼容的目的，下面是一些建议使用的列数据类型。</p>
+<ul>
+<li>Character types 字符型<ul>
+<li>CHAR（固定长度字符串）</li>
+<li>CLOB</li>
+<li>VARCHAR（可变长度字符串，只要不超过定义的最大长度，具体存储时按实际字符串长度存储）</li>
+</ul>
+</li>
+<li>Numeric types 数值型<ul>
+<li>精确数值类型<ul>
+<li>BIGINT</li>
+<li>DECIMAL（ DECIMAL(M, D)，M 表示整数部分加小数部分的位数，D 表示小数部分位数）</li>
+<li>DECFLOAT</li>
+<li>INTEGER</li>
+<li>NUMERIC</li>
+<li>SMALLINT</li>
+</ul>
+</li>
+<li>近似数值类型（存储符号（S）、尾数（M）和阶码（E））<ul>
+<li>DOUBLE PRECISION</li>
+<li>FLOAT</li>
+<li>REAL（默认是DOUBLLE，可以设置为FLOAT）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Datetime types 日期时间类型<ul>
+<li>DATE</li>
+<li>TIME</li>
+<li>TIMESTAMP</li>
+</ul>
+</li>
+<li>Binary types 二进制类型<ul>
+<li>BINARY</li>
+<li>BLOB</li>
+<li>VARBINARY</li>
+</ul>
+</li>
+<li>Additional types 其他类型<ul>
+<li>Boolean</li>
+<li>INTERVAL</li>
+<li>XML</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>MySQL中推荐使用的数据类型</p>
+<ul>
+<li>整数：INT。</li>
+<li>小数：DECIMAL。</li>
+<li>字符串：TEXT。(系统自动按照实际长度存储，不需要预先定义长度。不能当主键)</li>
+<li>日期与时间：DATETIME。</li>
+</ul>
+</li>
+</ol>
+<h3 id="C-x2F-CPP命名风格"><a href="#C-x2F-CPP命名风格" class="headerlink" title="C&#x2F;CPP命名风格"></a>C&#x2F;CPP命名风格</h3><p>取百家之长：</p>
+<ol>
+<li>变量、函数名和名字空间用 snake_case，全局变量加“g_”前缀；</li>
+<li>自定义类名用 CamelCase，成员函数用 snake_case，成员变量加“m_”前缀；</li>
+<li>宏和常量应当全大写，单词之间用下划线连接；</li>
+<li>尽量不要用下划线作为变量的前缀或者后缀（比如 _local、name_），很难识别。</li>
+</ol>
+<p>示例如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span>  MAX_PATH_LEN  256             <span class="comment">//常量，全大写</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> g_sys_flag;                        <span class="comment">// 全局变量，加g_前缀</span></span><br><span class="line"></span><br><span class="line">namespace linux_sys &#123;                <span class="comment">// 名字空间，全小写</span></span><br><span class="line">  <span class="type">void</span> <span class="title function_">get_rlimit_core</span><span class="params">()</span>;               <span class="comment">// 函数，全小写</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilePath</span> <span class="keyword">final</span>                 // 类名，首字母大写</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">public:</span><br><span class="line">  <span class="type">void</span> <span class="title function_">set_path</span><span class="params">(<span class="type">const</span> <span class="built_in">string</span>&amp; str)</span>;    <span class="comment">// 函数，全小写</span></span><br><span class="line">private:  </span><br><span class="line">  <span class="built_in">string</span> m_path;                      <span class="comment">// 成员变量，m_前缀 </span></span><br><span class="line">  <span class="type">int</span>    m_level;                     <span class="comment">// 成员变量，m_前缀</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://markdown.com.cn/cheat-sheet.html">MarkDown</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sqlstyle.guide/zh/">SQL</a></li>
+<li><a target="_blank" rel="noopener" href="http://openresty.org/cn/c-coding-style-guide.html" title="C++也可以参考">C&#x2F;CPP</a></li>
+</ul>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝奶茶<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -228,16 +352,75 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/25/%E8%AF%AD%E8%A8%80%E6%A0%B7%E5%BC%8F%E6%8C%87%E5%8D%97/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/09/25/%E8%AF%AD%E8%A8%80%E6%A0%B7%E5%BC%8F%E6%8C%87%E5%8D%97/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2022/09/25/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL必知必会</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -252,608 +435,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL必知必会" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/25/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">MySQL必知必会</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/25/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="archive-article-date">
-  	<time datetime="2022-09-25T10:09:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>解锁MySQL技能，在实战中学习。</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">极客时间</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DBA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/25/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E8%AF%AD%E8%A8%80%E6%A0%B7%E5%BC%8F%E6%8C%87%E5%8D%97%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">各语言样式指南摘要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL"><span class="toc-number">1.1.</span> <span class="toc-text">SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-x2F-CPP%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC"><span class="toc-number">1.2.</span> <span class="toc-text">C&#x2F;CPP命名风格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">参考链接</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-《被讨厌的勇气》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/03/%E3%80%8A%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《被讨厌的勇气》读书笔记 </a>
-    </h1>
   
 
-        
-        <a href="/2020/07/03/%E3%80%8A%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-07-03T12:42:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>上帝，请赐予我平静，去接受我无法改变的；给予我勇气，去改变我能改变的；赐予我智慧，分辨这两者的区别。</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">方法论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">哲学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">人生</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">幸福</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/03/%E3%80%8A%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-更新博客的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/27/%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%B9%E6%B3%95/">更新博客的方法</a>
-    </h1>
   
 
-        
-        <a href="/2020/06/27/%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-06-27T08:39:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>记录一下发布博客和更新博客源码的操作</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">代码</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/27/%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-《富爸爸穷爸爸》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/27/%E3%80%8A%E5%AF%8C%E7%88%B8%E7%88%B8%E7%A9%B7%E7%88%B8%E7%88%B8%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《富爸爸穷爸爸》读书笔记 </a>
-    </h1>
   
 
-        
-        <a href="/2020/06/27/%E3%80%8A%E5%AF%8C%E7%88%B8%E7%88%B8%E7%A9%B7%E7%88%B8%E7%88%B8%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-06-27T05:33:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>富人不为钱工作，而是让钱为自己工作。首先投资自己，把事业的重心放在资产项上，让钱去生钱，以此实现财务自由。</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">投资理财</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">生活哲学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/27/%E3%80%8A%E5%AF%8C%E7%88%B8%E7%88%B8%E7%A9%B7%E7%88%B8%E7%88%B8%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-如何听懂古典音乐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/19/%E5%A6%82%E4%BD%95%E5%90%AC%E6%87%82%E5%8F%A4%E5%85%B8%E9%9F%B3%E4%B9%90/">如何听懂古典音乐</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/19/%E5%A6%82%E4%BD%95%E5%90%AC%E6%87%82%E5%8F%A4%E5%85%B8%E9%9F%B3%E4%B9%90/" class="archive-article-date">
-  	<time datetime="2020-06-19T14:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="more"></span>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/19/%E5%A6%82%E4%BD%95%E5%90%AC%E6%87%82%E5%8F%A4%E5%85%B8%E9%9F%B3%E4%B9%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-《金字塔原理》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/11/%E3%80%8A%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《金字塔原理》读书笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/11/%E3%80%8A%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-06-10T16:10:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="more"></span>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">方法论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">麦肯锡</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">表达</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">写作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/11/%E3%80%8A%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-《丰田模式》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/10/%E3%80%8A%E4%B8%B0%E7%94%B0%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《丰田模式》读书笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/10/%E3%80%8A%E4%B8%B0%E7%94%B0%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-06-10T15:53:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>丰田模式和丰田生产方式（丰田的制造方法）是丰田公司DNA的双螺旋，它们共同定义了丰田的管理作风，以及该公司的流程特色。</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">提效</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">流程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">方法论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/10/%E3%80%8A%E4%B8%B0%E7%94%B0%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -876,8 +483,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
